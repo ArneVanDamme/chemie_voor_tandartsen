@@ -263,7 +263,12 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur
 
 
 
+\begin{exercise}
+    
+Gegeven is het fasediagram van Ag en Sn. Beantwoord de onderstaande vragen.
 
+
+\bigskip
 
 \begin{tikzpicture}
 \begin{axis}[
@@ -413,31 +418,31 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur
 
 \node at (axis cs:65,730) {\large Liquid};
 
-\node at (axis cs:8,510) {(Ag)};
+\node at (axis cs:6,510) {(Ag)};
 \node at (axis cs:15.5,370) {$\zeta$};
-\node at (axis cs:33,370) {Ag$_3$Sn};
+% \node at (axis cs:33,370) {Ag$_3$Sn};
 
-\node at (axis cs:94,115) {($\beta$Sn)};
-\node at (axis cs:94,48) {($\alpha$Sn)};
+% \node at (axis cs:94,115) {($\beta$Sn)};
+% \node at (axis cs:94,48) {($\alpha$Sn)};
 
 %================================================
 % COMPOSITION LABELS
 %================================================
 
-\node[above left] at (axis cs:11.5,724) {11.5};
-\node[above right] at (axis cs:19.5,724) {19.5};
+% \node[above left] at (axis cs:11.5,724) {11.5};
+% \node[above right] at (axis cs:19.5,724) {19.5};
 
-\node[below left] at (axis cs:22.85,480) {22.85};
-\node[below right] at (axis cs:25,480) {25};
+% \node[below left] at (axis cs:22.85,480) {22.85};
+% \node[below right] at (axis cs:25,480) {25};
 
-\node[above] at (axis cs:49.8,480) {49.8};
+% \node[above] at (axis cs:49.8,480) {49.8};
 \node[below] at (axis cs:96.2,221) {96.2};
 
 %================================================
 % TEMPERATURE LABELS
 %================================================
 
-\node[above right] at (axis cs:7,950) {961.93$^\circ$C};
+\node[above right] at (axis cs:-5,950) {961.93$^\circ$C};
 
 \node[above] at (axis cs:14,724) {724$^\circ$C};
 
@@ -445,7 +450,7 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur
 
 \node[above] at (axis cs:61,221) {221$^\circ$C};
 
-\node[above left] at (axis cs:92,232) {231.91$^\circ$C};
+\node[above left] at (axis cs:113,232) {231.91$^\circ$C};
 
 \node[above] at (axis cs:62,23) {23$^\circ$C};
 
@@ -459,7 +464,453 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur
 \end{axis}
 \end{tikzpicture}
 
+\begin{question}
+    Wat is de smelttemperatuur van puur zilver?
+
+    \begin{solution}
+        Hiervoor kijken we naar de linkerkant van het diagram, waar staat dat zilver smelt bij $961.93^\circ$C.
+    \end{solution}
+\end{question}
+
+\begin{question}
+    Vanaf welke temperatuur begint een legering met $20\%$ tin te stollen?
+
+    \begin{solution}
+        Hiervoor trekken we een verticale lijn op $20\%$ tin en kijken we waar deze de Liquidus lijn snijdt. Dit is op ongeveer $724^\circ$C.
+
+    \bigskip
+
+        \begin{tikzpicture}
+        \begin{axis}[
+            width=14cm,
+            height=10cm,
+            xmin=0, xmax=100,
+            ymin=0, ymax=1000,
+            axis lines=box,
+            xlabel={Samenstelling gew. \% Sn},
+            ylabel={Temperatuur $\ (^\circ\mathrm{C})$},
+            xtick={0,10,20,30,40,50,60,70,80,90,100},
+            xticklabels={,10,20,30,40,50,60,70,80,90,},
+            ytick={0,100,200,300,400,500,600,700,800,900,1000},
+            minor tick num=0,
+            tick style={black,thick},
+            tick align=outside,
+            enlargelimits=false,
+            clip=false,
+            xlabel style={font=\large},
+            ylabel style={font=\large},
+            tick label style={font=\small},
+            every axis plot/.append style={
+                thick,
+                black,
+                no marks
+            },
+        ]
+
+        %================================================
+        % LIQUIDUS CURVE
+        %================================================
+
+        % Ag-rich to eutectic
+        \addplot[smooth] coordinates {
+            (0,962)
+            (5,900)
+            (10,825)
+            (15,770)
+            (19.5,724)
+            (25,665)
+            (35,570)
+            (49.8,480)
+        };
+
+        % Eutectic to Sn-rich
+        \addplot[smooth] coordinates {
+            (49.8,480)
+            (60,445)
+            (70,415)
+            (80,380)
+            (88,340)
+            (93,300)
+            (96.2,221)
+        };
+
+        % Sn-rich melting point
+        \addplot[smooth] coordinates {
+            (96.2,221)
+            (98,230)
+            (100,232)
+        };
+
+        %================================================
+        % AG-RICH PHASE BOUNDARIES
+        %================================================
+
+        % Left Ag boundary
+        \addplot[smooth] coordinates {
+            (0,962)
+            (11.5,724)
+        };
+        \addplot[smooth] coordinates {
+            (11.5,724)
+            (7,0)
+        };
 
 
+        % Zeta left boundary
+        \addplot[smooth] coordinates {
+            (13.5,724)
+            (9.5,0)
+        };
+
+        % Zeta right boundary
+        \addplot[smooth] coordinates {
+            (13.5,724)
+            (22.85,480)
+        };
+        \addplot[smooth] coordinates {
+            (22.85,480)
+            (17,0)
+        };
+
+        % Ag3Sn vertical boundary
+        \addplot coordinates {
+            (25,480)
+            (25,0)
+        };
+
+        %================================================
+        % HORIZONTAL PHASE BOUNDARIES
+        %================================================
+
+        % 724 degree horizontal
+        \addplot coordinates {
+            (11.5,724)
+            (19.5,724)
+        };
+
+        % 480 degree horizontal
+        \addplot coordinates {
+            (22.85,480)
+            (49.8,480)
+        };
+
+        % Eutectic horizontal
+        \addplot coordinates {
+            (25,221)
+            (100,221)
+        };
+
+        % Low-temperature boundary
+        \addplot coordinates {
+            (25,23)
+            (100,23)
+        };
+
+        %================================================
+        % SN-RICH PHASE BOUNDARIES
+        %================================================
+
+        % Beta-Sn boundary
+        \addplot coordinates {
+            (100,221)
+            (100,100)
+        };
+
+        % Alpha-Sn boundary
+        \addplot coordinates {
+            (100,23)
+            (100,0)
+        };
+
+        %================================================
+        % PHASE LABELS
+        %================================================
+
+        \node at (axis cs:65,730) {\large Liquid};
+
+        \node at (axis cs:6,510) {(Ag)};
+        \node at (axis cs:15.5,370) {$\zeta$};
+        % \node at (axis cs:33,370) {Ag$_3$Sn};
+
+        % \node at (axis cs:94,115) {($\beta$Sn)};
+        % \node at (axis cs:94,48) {($\alpha$Sn)};
+
+        %================================================
+        % COMPOSITION LABELS
+        %================================================
+
+        % \node[above left] at (axis cs:11.5,724) {11.5};
+        % \node[above right] at (axis cs:19.5,724) {19.5};
+
+        % \node[below left] at (axis cs:22.85,480) {22.85};
+        % \node[below right] at (axis cs:25,480) {25};
+
+        % \node[above] at (axis cs:49.8,480) {49.8};
+        \node[below] at (axis cs:96.2,221) {96.2};
+
+        %================================================
+        % TEMPERATURE LABELS
+        %================================================
+
+        \node[above right] at (axis cs:-5,950) {961.93$^\circ$C};
+
+        \node[above] at (axis cs:14,724) {724$^\circ$C};
+
+        \node[above] at (axis cs:37,480) {480$^\circ$C};
+
+        \node[above] at (axis cs:61,221) {221$^\circ$C};
+
+        \node[above left] at (axis cs:113,232) {231.91$^\circ$C};
+
+        \node[above] at (axis cs:62,23) {23$^\circ$C};
+
+        %================================================
+        % ELEMENT LABELS
+        %================================================
+
+        \node[below] at (axis cs:0,0) {Ag};
+        \node[below] at (axis cs:100,0) {Sn};
+
+
+        \addplot[
+            blue,
+            thick,
+            no marks
+        ] coordinates {
+            (20,0)
+            (20,1000)
+        };
+
+        \end{axis}
+        \end{tikzpicture}
+
+    \end{solution}
+\end{question}
+
+\begin{question}
+    Duid het punt aan op het Ag-Sn fasediagram waar de legering deze microstructuur heeft:
+    
+\begin{center}
+    \includegraphics[width=0.1\textwidth]{../xmPictures/image.png}
+\end{center}
+    \begin{solution}
+        Dit vinden we terug op het eutectische punt in het diagram:
+
+        
+\bigskip
+
+\begin{tikzpicture}
+\begin{axis}[
+    width=14cm,
+    height=10cm,
+    xmin=0, xmax=100,
+    ymin=0, ymax=1000,
+    axis lines=box,
+    xlabel={Samenstelling gew. \% Sn},
+    ylabel={Temperatuur $\ (^\circ\mathrm{C})$},
+    xtick={0,10,20,30,40,50,60,70,80,90,100},
+    xticklabels={,10,20,30,40,50,60,70,80,90,},
+    ytick={0,100,200,300,400,500,600,700,800,900,1000},
+    minor tick num=0,
+    tick style={black,thick},
+    tick align=outside,
+    enlargelimits=false,
+    clip=false,
+    xlabel style={font=\large},
+    ylabel style={font=\large},
+    tick label style={font=\small},
+    every axis plot/.append style={
+        thick,
+        black,
+        no marks
+    },
+]
+
+%================================================
+% LIQUIDUS CURVE
+%================================================
+
+% Ag-rich to eutectic
+\addplot[smooth] coordinates {
+    (0,962)
+    (5,900)
+    (10,825)
+    (15,770)
+    (19.5,724)
+    (25,665)
+    (35,570)
+    (49.8,480)
+};
+
+% Eutectic to Sn-rich
+\addplot[smooth] coordinates {
+    (49.8,480)
+    (60,445)
+    (70,415)
+    (80,380)
+    (88,340)
+    (93,300)
+    (96.2,221)
+};
+
+% Sn-rich melting point
+\addplot[smooth] coordinates {
+    (96.2,221)
+    (98,230)
+    (100,232)
+};
+
+%================================================
+% AG-RICH PHASE BOUNDARIES
+%================================================
+
+% Left Ag boundary
+\addplot[smooth] coordinates {
+    (0,962)
+    (11.5,724)
+};
+\addplot[smooth] coordinates {
+    (11.5,724)
+    (7,0)
+};
+
+
+% Zeta left boundary
+\addplot[smooth] coordinates {
+    (13.5,724)
+    (9.5,0)
+};
+
+% Zeta right boundary
+\addplot[smooth] coordinates {
+    (13.5,724)
+    (22.85,480)
+};
+\addplot[smooth] coordinates {
+    (22.85,480)
+    (17,0)
+};
+
+% Ag3Sn vertical boundary
+\addplot coordinates {
+    (25,480)
+    (25,0)
+};
+
+%================================================
+% HORIZONTAL PHASE BOUNDARIES
+%================================================
+
+% 724 degree horizontal
+\addplot coordinates {
+    (11.5,724)
+    (19.5,724)
+};
+
+% 480 degree horizontal
+\addplot coordinates {
+    (22.85,480)
+    (49.8,480)
+};
+
+% Eutectic horizontal
+\addplot coordinates {
+    (25,221)
+    (100,221)
+};
+
+% Low-temperature boundary
+\addplot coordinates {
+    (25,23)
+    (100,23)
+};
+
+%================================================
+% SN-RICH PHASE BOUNDARIES
+%================================================
+
+% Beta-Sn boundary
+\addplot coordinates {
+    (100,221)
+    (100,100)
+};
+
+% Alpha-Sn boundary
+\addplot coordinates {
+    (100,23)
+    (100,0)
+};
+
+%================================================
+% PHASE LABELS
+%================================================
+
+\node at (axis cs:65,730) {\large Liquid};
+
+\node at (axis cs:6,510) {(Ag)};
+\node at (axis cs:15.5,370) {$\zeta$};
+% \node at (axis cs:33,370) {Ag$_3$Sn};
+
+% \node at (axis cs:94,115) {($\beta$Sn)};
+% \node at (axis cs:94,48) {($\alpha$Sn)};
+
+%================================================
+% COMPOSITION LABELS
+%================================================
+
+% \node[above left] at (axis cs:11.5,724) {11.5};
+% \node[above right] at (axis cs:19.5,724) {19.5};
+
+% \node[below left] at (axis cs:22.85,480) {22.85};
+% \node[below right] at (axis cs:25,480) {25};
+
+% \node[above] at (axis cs:49.8,480) {49.8};
+\node[below] at (axis cs:96.2,221) {96.2};
+
+%================================================
+% TEMPERATURE LABELS
+%================================================
+
+\node[above right] at (axis cs:-5,950) {961.93$^\circ$C};
+
+\node[above] at (axis cs:14,724) {724$^\circ$C};
+
+\node[above] at (axis cs:37,480) {480$^\circ$C};
+
+\node[above] at (axis cs:61,221) {221$^\circ$C};
+
+\node[above left] at (axis cs:113,232) {231.91$^\circ$C};
+
+\node[above] at (axis cs:62,23) {23$^\circ$C};
+
+%================================================
+% ELEMENT LABELS
+%================================================
+
+\node[below] at (axis cs:0,0) {Ag};
+\node[below] at (axis cs:100,0) {Sn};
+
+% Eutectic point
+\addplot[
+    only marks,
+    mark=*,
+    mark size=2.5pt,
+    red
+] coordinates {
+    (96.2,221)
+};
+
+\end{axis}
+\end{tikzpicture}
+    \end{solution}
+\end{question}
+
+
+
+
+
+
+
+\end{exercise}
 
 \end{document}
