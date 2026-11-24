@@ -19,6 +19,11 @@
                 "--compile pdf",
                 "${relativeFile}"
             ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "HTML",
@@ -27,52 +32,52 @@
                 "--force",
                 "--compile html",
                 "${relativeFile}"
-            ],
+            ]
         },
         {
             "label": "SERVE",
             "args": [
-                "ghaction",
-            ],
+                "ghaction"
+            ]
         },
         {
             "label": "Bake",
             "args": [
                 "-v",
                 "bake"
-            ],
+            ]
         },
         {
             "label": "Serve",
             "args": [
                 "-v",
                 "serve"
-            ],
+            ]
         },
         {
             "label": "Frost",
             "args": [
                 "-v",
                 "frost"
-            ],
+            ]
         },
         {
             "label": "Start Ximera Server",
             "args": [
                 "ximeraserver"
-            ],
+            ]
         },
         {
-                "label": "Preview in Simple Browser",
-                "command": "${input:openSimpleBrowser}",
+            "label": "Preview in Simple Browser",
+            "command": "${input:openSimpleBrowser}"
         },
         {
             "label": "Bake PDF",
             "args": [
                 "bake",
                 "-d",
-                "--compile pdf",
-            ],
+                "--compile pdf"
+            ]
         },
         {
             "label": "Bake PDF (force rebuild)",
@@ -80,42 +85,42 @@
                 "bake",
                 "-d",
                 "-f",
-                "--compile pdf",
-            ],
+                "--compile pdf"
+            ]
         },
         {
             "label": "Bake handout",
             "args": [
                 "bake",
-                "--compile handout.pdf",
-            ],
+                "--compile handout.pdf"
+            ]
         },
         {
             "label": "Bake handout (force rebuild)",
             "args": [
                 "bake",
                 "-f",
-                "--compile handout.pdf",
-            ],
+                "--compile handout.pdf"
+            ]
         },
         {
             "label": "Delete all",
             "args": [
                 "veryclean"
-            ],
+            ]
         },
         {
             "label": "Update DevEnv",
             "args": [
                 "updateDevEnv"
-            ],
+            ]
         },
         {
             "label": "Generate GPG key",
             "args": [
                 "genKey"
-            ],
-        },
+            ]
+        }
     ],
     "inputs": [
         {

@@ -1,0 +1,465 @@
+\documentclass{ximera}
+
+\input{../xmPreamble.tex}
+
+\begin{document}
+
+\begin{center}
+    {\Large\textbf{Fasediagrammen \& Hefboomregel}}
+\end{center}
+
+\medskip
+
+\begin{exercise}
+
+Een mengeling met $20\%$ massa Si en $80\%$ massa Ge wordt afgekoeld van $1500$°C. Tot hoeveel graden moet er gekoeld worden zodat ongeveer $66\%$ van de vloeistof gestold is? Maak een schatting aan de hand van het gegeven fasediagra van Si en Ge. Teken de microstructuur van deze samenstelling.
+
+\bigskip
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm,
+        height=8cm,
+        xmin=0, xmax=100,
+        ymin=900, ymax=1500,
+        xlabel={Samenstelling (gew.\% Si)},
+        ylabel={Temperatuur ($^\circ$C)},
+        xtick={0,10,20,30,40,50,60,70,80,90,100},
+        ytick={900,1000,1100,1200,1300,1400,1500},
+        minor tick num=1,
+        tick style={black, thick},
+        axis line style={black, thick},
+        enlargelimits=false,
+    ]
+
+    % Liquidus
+    \addplot[
+        thick,
+        black,
+        mark=square*,
+        mark size=1.8pt
+    ] coordinates {
+        (0,945)
+        (10,1150)
+        (20,1205)
+        (30,1260)
+        (40,1300)
+        (50,1330)
+        (60,1370)
+        (70,1390)
+        (80,1400)
+        (90,1410)
+        (100,1415)
+    };
+
+    % Solidus
+    \addplot[
+        thick,
+        black,
+        mark=*,
+        mark size=1.4pt
+    ] coordinates {
+        (0,945)
+        (10,1000)
+        (20,1060)
+        (30,1120)
+        (40,1180)
+        (50,1235)
+        (60,1285)
+        (70,1335)
+        (80,1370)
+        (90,1400)
+        (100,1415)
+    };
+
+    % Phase labels
+    \node at (axis cs:28,1390) {\bfseries Liquid};
+    \node at (axis cs:40,1240) {\Large $+$};
+    \node at (axis cs:28,1185) {\bfseries Liquid};
+    \node at (axis cs:47,1275) {\Large $\alpha$};
+    \node at (axis cs:58,1080) {\Large $\alpha$};
+
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{solution} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width=12cm,
+        height=8cm,
+        xmin=0, xmax=100,
+        ymin=900, ymax=1500,
+        xlabel={Samenstelling (gew.\% Si)},
+        ylabel={Temperatuur ($^\circ$C)},
+        xtick={0,10,20,30,40,50,60,70,80,90,100},
+        ytick={900,1000,1100,1200,1300,1400,1500},
+        minor tick num=1,
+        tick style={black, thick},
+        axis line style={black, thick},
+        enlargelimits=false,
+        clip=false,
+    ]
+
+    % Liquidus
+    \addplot[
+        thick,
+        black,
+        mark=square*,
+        mark size=1.8pt
+    ] coordinates {
+        (0,945)
+        (10,1150)
+        (20,1205)
+        (30,1260)
+        (40,1300)
+        (50,1330)
+        (60,1370)
+        (70,1390)
+        (80,1400)
+        (90,1410)
+        (100,1415)
+    };
+
+    % Solidus
+    \addplot[
+        thick,
+        black,
+        mark=*,
+        mark size=1.4pt
+    ] coordinates {
+        (0,945)
+        (10,1000)
+        (20,1060)
+        (30,1120)
+        (40,1180)
+        (50,1235)
+        (60,1285)
+        (70,1335)
+        (80,1370)
+        (90,1400)
+        (100,1415)
+    };
+
+    % Horizontal blue line at T = 1100
+    \addplot[
+        blue,
+        thick,
+        no marks
+    ] coordinates {
+        (0,1100)
+        (100,1100)
+    };
+
+    % Vertical blue line at Si = 20
+    \addplot[
+        blue,
+        thick,
+        no marks
+    ] coordinates {
+        (20,900)
+        (20,1500)
+    };
+
+        % Vertical red lines at Si = 8 and Si = 26
+    \addplot[
+        red,
+        thick,
+        no marks
+    ] coordinates {
+        (8,900)
+        (8,1500)
+    };
+
+    \addplot[
+        red,
+        thick,
+        no marks
+    ] coordinates {
+        (26,900)
+        (26,1500)
+    };
+
+    % Phase labels
+    \node at (axis cs:28,1390) {\bfseries Liquid};
+    \node at (axis cs:40,1240) {\Large $+$};
+    \node at (axis cs:28,1185) {\bfseries Liquid};
+    \node at (axis cs:47,1275) {\Large $\alpha$};
+    \node at (axis cs:58,1080) {\Large $\alpha$};
+
+    % Red labels below the x-axis
+    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:8,900) {8};
+    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:8,860) {$C_L$};
+    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:26,900) {26};
+    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:26,860) {$C_{\alpha}$};
+    \node[blue, font=\bfseries, yshift=-8pt] at (axis cs:20,860) {$C_0$};
+
+    \end{axis}
+\end{tikzpicture}
+
+\bigskip
+
+Met de hefboomregel kunnen we bepalen welk percentage van de legering gestold is. We trekken hiervoor een verticale lijn op de gegeven procentuele samenstelling.
+
+Nu zoeken we de temperatuur waarvoor $66\%$ van de vloeistof gestold is. We trekken een horizontale lijn op de plaats waar $66\%$ van de lijn aan de linkerkant ligt (van $C_L$ tot $C_0$). Dit is onze hoeveelheid $\alpha$-fase, dus vaste fase.
+
+\[
+\text{hoeveelheid } \alpha\text{-fase} = \frac{C_L-20}{C_L-C_{\alpha}}=0{,}66
+\]
+
+We definiëren hier de volgende punten op de horizontale as:
+
+\begin{itemize}
+    \item $C_0$ = oorspronkelijke samenstelling ($20$ gew.$\%$ Si);
+    \item $C_L$ = samenstelling van de vloeibare fase;
+    \item $C_{\alpha}$ = samenstelling van de vaste fase.
+\end{itemize}
+
+Deze samenstelling komt dus voor bij een temperatuur van ongeveer $1100$°C.
+
+De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur) en $33\%$ Liquidus-fase (wit op de figuur).
+
+\begin{center}
+\begin{tikzpicture}
+    % Kader
+    \draw[thick] (0,0) rectangle (7,4);
+
+    % Alpha-fase
+    \begin{scope}
+        \clip (0,0) rectangle (7,4);
+
+        \foreach \x/\y/\r in {
+            0.9/0.8/1.25,
+            3.2/0.6/1.15,
+            5.9/1.0/1.20,
+            1.8/2.9/1.15,
+            4.5/2.8/1.30,
+            6.8/3.5/0.95
+        }{
+            \fill[gray!45] (\x,\y) circle (\r);
+        }
+    \end{scope}
+
+    % Labels
+    \node at (0.9,0.8) {$\alpha$};
+    \node at (3,3.5) {$L$};
+
+    % Legenda
+    \fill[gray!45] (1.4,-0.65) circle (0.12);
+    \node[anchor=west] at (1.65,-0.65) {$\alpha$-fase};
+
+    \fill[white] (4.0,-0.65) circle (0.12);
+    \draw[gray] (4.0,-0.65) circle (0.12);
+    \node[anchor=west] at (4.25,-0.65) {Liquidus-fase};
+\end{tikzpicture}
+\end{center}
+
+
+\end{solution}
+
+\end{exercise}
+
+
+
+
+
+
+\begin{tikzpicture}
+\begin{axis}[
+    width=14cm,
+    height=10cm,
+    xmin=0, xmax=100,
+    ymin=0, ymax=1000,
+    axis lines=box,
+    xlabel={Samenstelling gew. \% Sn},
+    ylabel={Temperatuur $\ (^\circ\mathrm{C})$},
+    xtick={0,10,20,30,40,50,60,70,80,90,100},
+    xticklabels={,10,20,30,40,50,60,70,80,90,},
+    ytick={0,100,200,300,400,500,600,700,800,900,1000},
+    minor tick num=0,
+    tick style={black,thick},
+    tick align=outside,
+    enlargelimits=false,
+    clip=false,
+    xlabel style={font=\large},
+    ylabel style={font=\large},
+    tick label style={font=\small},
+    every axis plot/.append style={
+        thick,
+        black,
+        no marks
+    },
+]
+
+%================================================
+% LIQUIDUS CURVE
+%================================================
+
+% Ag-rich to eutectic
+\addplot[smooth] coordinates {
+    (0,962)
+    (5,900)
+    (10,825)
+    (15,770)
+    (19.5,724)
+    (25,665)
+    (35,570)
+    (49.8,480)
+};
+
+% Eutectic to Sn-rich
+\addplot[smooth] coordinates {
+    (49.8,480)
+    (60,445)
+    (70,415)
+    (80,380)
+    (88,340)
+    (93,300)
+    (96.2,221)
+};
+
+% Sn-rich melting point
+\addplot[smooth] coordinates {
+    (96.2,221)
+    (98,230)
+    (100,232)
+};
+
+%================================================
+% AG-RICH PHASE BOUNDARIES
+%================================================
+
+% Left Ag boundary
+\addplot[smooth] coordinates {
+    (0,962)
+    (11.5,724)
+};
+\addplot[smooth] coordinates {
+    (11.5,724)
+    (7,0)
+};
+
+
+% Zeta left boundary
+\addplot[smooth] coordinates {
+    (13.5,724)
+    (9.5,0)
+};
+
+% Zeta right boundary
+\addplot[smooth] coordinates {
+    (13.5,724)
+    (22.85,480)
+};
+\addplot[smooth] coordinates {
+    (22.85,480)
+    (17,0)
+};
+
+% Ag3Sn vertical boundary
+\addplot coordinates {
+    (25,480)
+    (25,0)
+};
+
+%================================================
+% HORIZONTAL PHASE BOUNDARIES
+%================================================
+
+% 724 degree horizontal
+\addplot coordinates {
+    (11.5,724)
+    (19.5,724)
+};
+
+% 480 degree horizontal
+\addplot coordinates {
+    (22.85,480)
+    (49.8,480)
+};
+
+% Eutectic horizontal
+\addplot coordinates {
+    (25,221)
+    (100,221)
+};
+
+% Low-temperature boundary
+\addplot coordinates {
+    (25,23)
+    (100,23)
+};
+
+%================================================
+% SN-RICH PHASE BOUNDARIES
+%================================================
+
+% Beta-Sn boundary
+\addplot coordinates {
+    (100,221)
+    (100,100)
+};
+
+% Alpha-Sn boundary
+\addplot coordinates {
+    (100,23)
+    (100,0)
+};
+
+%================================================
+% PHASE LABELS
+%================================================
+
+\node at (axis cs:65,730) {\large Liquid};
+
+\node at (axis cs:8,510) {(Ag)};
+\node at (axis cs:15.5,370) {$\zeta$};
+\node at (axis cs:33,370) {Ag$_3$Sn};
+
+\node at (axis cs:94,115) {($\beta$Sn)};
+\node at (axis cs:94,48) {($\alpha$Sn)};
+
+%================================================
+% COMPOSITION LABELS
+%================================================
+
+\node[above left] at (axis cs:11.5,724) {11.5};
+\node[above right] at (axis cs:19.5,724) {19.5};
+
+\node[below left] at (axis cs:22.85,480) {22.85};
+\node[below right] at (axis cs:25,480) {25};
+
+\node[above] at (axis cs:49.8,480) {49.8};
+\node[below] at (axis cs:96.2,221) {96.2};
+
+%================================================
+% TEMPERATURE LABELS
+%================================================
+
+\node[above right] at (axis cs:7,950) {961.93$^\circ$C};
+
+\node[above] at (axis cs:14,724) {724$^\circ$C};
+
+\node[above] at (axis cs:37,480) {480$^\circ$C};
+
+\node[above] at (axis cs:61,221) {221$^\circ$C};
+
+\node[above left] at (axis cs:92,232) {231.91$^\circ$C};
+
+\node[above] at (axis cs:62,23) {23$^\circ$C};
+
+%================================================
+% ELEMENT LABELS
+%================================================
+
+\node[below] at (axis cs:0,0) {Ag};
+\node[below] at (axis cs:100,0) {Sn};
+
+\end{axis}
+\end{tikzpicture}
+
+
+
+
+\end{document}
