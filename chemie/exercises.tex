@@ -495,80 +495,94 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (grijze korrels op de figu
 
 
 
+\begin{exercise}
 
+Gegeven is het fasediagram van Hg en Ag. Een legering van $65\%$ kwik en $35\%$ zilver wordt afgekoeld. Bij welke temperatuur bevat deze legering het meeste $\beta$ fase, bij $200^\circ$C, of bij kamertemperatuur?
+
+\bigskip
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=11cm, height=9cm,
-    xmin=0, xmax=100, ymin=-40, ymax=1000,
+    xmin=0, xmax=100,
+    ymin=-40, ymax=1000,
     xlabel={Massa\% Hg},
     ylabel={Temperatuur ($^\circ$C)},
     xtick={0,20,40,60,80,100},
     ytick={0,200,400,600,800,1000},
     axis lines=box,
     tick style={black},
-    enlargelimits=false, clip=false,
+    enlargelimits=false,
+    clip=false,
 ]
 
 % Liquidus
 \addplot[thick, smooth] coordinates {
-    (0,960.5) (10,930) (20,890) (30,840) (40,780) (50,710)
-    (60,620) (70,520) (80,440) (90,390) (95,350) (98,280)
+    (0,960.5) (10,930) (20,890) (30,840)
+    (40,780) (50,710) (60,620) (70,520)
+    (80,440) (90,390) (95,350) (98,280)
 };
 
-% α-solidus
+% alpha-solidus
 \addplot[thick, smooth] coordinates {
-    (0,960.5) (5,920) (10,870) (20,770) (30,660)
-    (40,520) (47,380) (52,280)
+    (0,960.5) (5,920) (10,870) (20,770)
+    (30,660) (40,520) (47,380) (52,280)
 };
 
-% Quasi-verticale α-grens
+% Quasi-verticale alpha-grens
 \addplot[thick, smooth] coordinates {
-    (50,-39) (50,50) (50.2,120) (50.5,200) (52,280)
+    (50,-39) (50,50) (50.2,120)
+    (50.5,200) (52,280)
 };
 
-% Horizontale lijn op 280°C
-\addplot[thick] coordinates {(52,280) (98,280)};
+% Horizontale lijn op 280 graden
+\addplot[thick] coordinates {
+    (52,280) (98,280)
+};
 
-% β-linkergrens
+% beta-linkergrens
 \addplot[thick, smooth] coordinates {
     (58,-39) (58,60) (59,200) (60,280)
 };
 
-% β-rechtergrens
+% beta-rechtergrens
 \addplot[thick, smooth] coordinates {
     (60,-39) (60,50) (60,120) (60,280)
 };
 
-% γ-linkergrens
+% gamma-linkergrens
 \addplot[thick, smooth] coordinates {
     (69,-39) (70,70) (70,140) (72,150)
 };
 
-% γ-rechtergrens
+% gamma-rechtergrens
 \addplot[thick, smooth] coordinates {
     (72,-39) (72,50) (72,120) (72,150)
 };
 
-% Horizontale γ-top
-\addplot[thick] coordinates {(60,150) (99,150)};
+% Horizontale gamma-top
+\addplot[thick] coordinates {
+    (60,150) (99,150)
+};
 
 % Hg-rijke grens
 \addplot[thick, smooth] coordinates {
-    (98,280) (99,230) (99.4,170) (99.7,80) (100,-39)
+    (98,280) (99,230) (99.4,170)
+    (99.7,80) (100,-39)
 };
 
-% Labels
+% Fasegebieden
 \node at (axis cs:68,860) {\Large Liquid};
 \node at (axis cs:34,300) {\Large $\alpha$};
-\node at (axis cs:60,430) {$\alpha $ + Liquid};
-\node at (axis cs:86,210) {$\beta $ + L};
+\node at (axis cs:60,430) {$\alpha+L$};
+\node at (axis cs:86,210) {$\beta+L$};
 \node at (axis cs:53,150) {$\beta$};
 \node at (axis cs:53,100) {$+$};
 \node at (axis cs:53,60) {$\alpha$};
 \node at (axis cs:65,100) {$\beta$};
 \node at (axis cs:65,60) {$+$};
 \node at (axis cs:65,20) {$\gamma$};
-\node at (axis cs:86,60) {$\gamma $ + L};
+\node at (axis cs:86,60) {$\gamma+L$};
 \node at (axis cs:59,60) {$\beta$};
 \node at (axis cs:71,70) {$\gamma$};
 
@@ -579,10 +593,328 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (grijze korrels op de figu
 
 \end{axis}
 \end{tikzpicture}
+\end{center}
+\bigskip
+
+\begin{solution}
+
+
+
+\bigskip
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=11cm, height=9cm,
+    xmin=0, xmax=100,
+    ymin=-40, ymax=1000,
+    xlabel={Massa\% Hg},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={0,200,400,600,800,1000},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false,
+    clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,960.5) (10,930) (20,890) (30,840)
+    (40,780) (50,710) (60,620) (70,520)
+    (80,440) (90,390) (95,350) (98,280)
+};
+
+% alpha-solidus
+\addplot[thick, smooth] coordinates {
+    (0,960.5) (5,920) (10,870) (20,770)
+    (30,660) (40,520) (47,380) (52,280)
+};
+
+% Quasi-verticale alpha-grens
+\addplot[thick, smooth] coordinates {
+    (50,-39) (50,50) (50.2,120)
+    (50.5,200) (52,280)
+};
+
+% Horizontale lijn op 280 graden
+\addplot[thick] coordinates {
+    (52,280) (98,280)
+};
+
+% beta-linkergrens
+\addplot[thick, smooth] coordinates {
+    (58,-39) (58,60) (59,200) (60,280)
+};
+
+% beta-rechtergrens
+\addplot[thick, smooth] coordinates {
+    (60,-39) (60,50) (60,120) (60,280)
+};
+
+% gamma-linkergrens
+\addplot[thick, smooth] coordinates {
+    (69,-39) (70,70) (70,140) (72,150)
+};
+
+% gamma-rechtergrens
+\addplot[thick, smooth] coordinates {
+    (72,-39) (72,50) (72,120) (72,150)
+};
+
+% Horizontale gamma-top
+\addplot[thick] coordinates {
+    (60,150) (99,150)
+};
+
+% Hg-rijke grens
+\addplot[thick, smooth] coordinates {
+    (98,280) (99,230) (99.4,170)
+    (99.7,80) (100,-39)
+};
+
+% Fasegebieden
+\node at (axis cs:68,860) {\Large Liquid};
+\node at (axis cs:34,300) {\Large $\alpha$};
+\node at (axis cs:60,430) {$\alpha+L$};
+\node at (axis cs:86,220) {$\beta+L$};
+\node at (axis cs:53,150) {$\beta$};
+\node at (axis cs:53,100) {$+$};
+\node at (axis cs:53,60) {$\alpha$};
+\node at (axis cs:65,100) {$\beta$};
+\node at (axis cs:65,60) {$+$};
+\node at (axis cs:65,20) {$\gamma$};
+\node at (axis cs:86,60) {$\gamma+L$};
+\node at (axis cs:59,60) {$\beta$};
+\node at (axis cs:71,70) {$\gamma$};
+
+% Temperatuur-labels
+\node[left] at (axis cs:0,960) {960.5$^\circ$C};
+\node[above] at (axis cs:80,280) {280$^\circ$C};
+\node[right] at (axis cs:100,-39) {-38.9$^\circ$C};
+
+
+% Tie-line bij kamertemperatuur
+\addplot[blue, thin] coordinates {
+    (60,20) (70,20)
+};
+
+% Tie-line bij kamertemperatuur
+\addplot[blue, thin] coordinates {
+    (60,200) (99,200)
+};
+
+% Verticale lijn bij C0 = 80
+\addplot[blue, thin] coordinates {
+    (65,-40) (65,1000)
+};
+
+% Markeringen op tie-line
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+coordinates {(60,20)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+coordinates {(70,20)};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+coordinates {(60,200)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+coordinates {(99,200)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+coordinates {(65,20)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+coordinates {(65,200)};
+
+\node[Liquiduscolour,font=\bfseries\Large,above right]
+    at (axis cs:60,200) {L};
+\node[Soliduscolour,font=\bfseries\Large,above left]
+    at (axis cs:80,200) {$\beta$};
+
+\node[Liquiduscolour,font=\bfseries\Large,above right]
+    at (axis cs:60,20) {$\gamma$};
+\node[Soliduscolour,font=\bfseries\Large,above left]
+    at (axis cs:70,20) {$\beta$};
+
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+We tekenen een verticale lijn op het gegeven gewichts-percentage. Bij $200^\circ$C en kamertemperatuur trekken we een horizontale lijn binnen de fase dat de stof zich bevindt. 
+
+Het gebied bij $200^\circ$C is $\beta+L$, we hebben dus een \textcolor{Liquiduscolour}{\textbf{L}}-lijn en een \textcolor{Soliduscolour}{\textbf{$\beta$}}-lijn. 
+
+Het gebied bij kamertemperatuur ($25^\circ$C) is $\beta+\gamma$, we hebben dus een \textcolor{Liquiduscolour}{\textbf{$\gamma$}}-lijn en een \textcolor{Soliduscolour}{\textbf{$\beta$}}-lijn.
+
+Bij $200^\circ$C neemt de \textcolor{Soliduscolour}{\textbf{$\beta$}}-lijn een groter deel van de totale lijn in dan bij kamertemperatuur. Bij kamertemperatuur is de \textcolor{Soliduscolour}{\textbf{$\beta$}}-lijn maar ongeveer de helft van de totale lijn.
+
+Let op: een vaak gemaakte fout is deze lijnen omwisselen. De lijn ligt altijd tegenover zijn fase. Dit zien we in de ondersztaande figuur. De lijn grenzend aan de L-fase is de $\beta$-lijn, terwijl de lijn grenzend aan de $\beta$-fase de L-lijn is.
+
+
+
+\bigskip
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=11cm, height=9cm,
+    xmin=0, xmax=100,
+    ymin=-40, ymax=1000,
+    xlabel={Massa\% Hg},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={0,200,400,600,800,1000},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false,
+    clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,960.5) (10,930) (20,890) (30,840)
+    (40,780) (50,710) (60,620) (70,520)
+    (80,440) (90,390) (95,350) (98,280)
+};
+
+% alpha-solidus
+\addplot[thick, smooth] coordinates {
+    (0,960.5) (5,920) (10,870) (20,770)
+    (30,660) (40,520) (47,380) (52,280)
+};
+
+% Quasi-verticale alpha-grens
+\addplot[thick, smooth] coordinates {
+    (50,-39) (50,50) (50.2,120)
+    (50.5,200) (52,280)
+};
+
+% Horizontale lijn op 280 graden
+\addplot[thick] coordinates {
+    (52,280) (98,280)
+};
+
+% beta-linkergrens
+\addplot[thick, smooth] coordinates {
+    (58,-39) (58,60) (59,200) (60,280)
+};
+
+% beta-rechtergrens
+\addplot[thick, smooth] coordinates {
+    (60,-39) (60,50) (60,120) (60,280)
+};
+
+% gamma-linkergrens
+\addplot[thick, smooth] coordinates {
+    (69,-39) (70,70) (70,140) (72,150)
+};
+
+% gamma-rechtergrens
+\addplot[thick, smooth] coordinates {
+    (72,-39) (72,50) (72,120) (72,150)
+};
+
+% Horizontale gamma-top
+\addplot[thick] coordinates {
+    (60,150) (99,150)
+};
+
+% Hg-rijke grens
+\addplot[thick, smooth] coordinates {
+    (98,280) (99,230) (99.4,170)
+    (99.7,80) (100,-39)
+};
+
+
+
+% Temperatuur-labels
+\node[left] at (axis cs:0,960) {960.5$^\circ$C};
+\node[above] at (axis cs:80,280) {280$^\circ$C};
+\node[right] at (axis cs:100,-39) {-38.9$^\circ$C};
+
+
+% Tie-line bij kamertemperatuur
+\addplot[blue, thin] coordinates {
+    (60,20) (70,20)
+};
+
+% Tie-line bij kamertemperatuur
+\addplot[blue, thin] coordinates {
+    (60,200) (99,200)
+};
+
+% Verticale lijn bij C0 = 80
+\addplot[blue, thin] coordinates {
+    (65,-40) (65,1000)
+};
+
+% Markeringen op tie-line
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+coordinates {(60,20)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+coordinates {(70,20)};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+coordinates {(60,200)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+coordinates {(99,200)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+coordinates {(65,20)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+coordinates {(65,200)};
+
+% Fasegebieden
+\node[Soliduscolour,font=\bfseries\Large] at (axis cs:59,230) {$\beta$};
+\node[Liquiduscolour,font=\bfseries\Large] at (axis cs:105,230) {L};
+\node[Soliduscolour,font=\bfseries\Large] at (axis cs:59,60) {$\beta$};
+\node[Liquiduscolour,font=\bfseries\Large] at (axis cs:71,70) {$\gamma$};
+
+\node[Liquiduscolour,font=\bfseries\Large,above right]
+    at (axis cs:60,200) {L};
+\node[Soliduscolour,font=\bfseries\Large,above left]
+    at (axis cs:80,200) {$\beta$};
+
+\node[Liquiduscolour,font=\bfseries\Large,above right]
+    at (axis cs:60,20) {$\gamma$};
+\node[Soliduscolour,font=\bfseries\Large,above left]
+    at (axis cs:70,20) {$\beta$};
+
+% Gebogen verbindingen bij 200 °C
+\draw[Liquiduscolour, ultra thick]
+    (axis cs:63,270)
+    .. controls (axis cs:75,340) and (axis cs:95,340) ..
+    (axis cs:105,270);
+
+\draw[Soliduscolour, ultra thick]
+    (axis cs:75,270)
+    .. controls (axis cs:70,340) and (axis cs:60,340) ..
+    (axis cs:59,270);
+
+
+% Gebogen verbindingen bij kamertemperatuur
+\draw[Liquiduscolour, ultra thick]
+    (axis cs:63,110)
+    .. controls (axis cs:62,150) and (axis cs:68,160) ..
+    (axis cs:71,110);
+
+\draw[Soliduscolour, ultra thick]
+    (axis cs:68,110)
+    .. controls (axis cs:65,170) and (axis cs:60,170) ..
+    (axis cs:59,110);
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+
+\end{solution}
+
+\end{exercise}
 
 
 
 
+
+
+
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=13cm, height=9cm,
@@ -647,7 +979,7 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (grijze korrels op de figu
 
 \end{axis}
 \end{tikzpicture}
-
+\end{center}
 
 
 \begin{exercise}
