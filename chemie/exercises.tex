@@ -495,6 +495,428 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (grijze korrels op de figu
 
 
 
+
+\begin{exercise}
+
+Hoeveel gewichtsprocent $\alpha$-fase is er aanwezig in een legering van Ag en Cu, met $40\%$ Ag bij $850^\circ$C? Maak een schatting op het onderstaande fasediagram.
+
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=13cm, height=9cm,
+    xmin=0, xmax=100, ymin=200, ymax=1200,
+    xlabel={Samenstelling (gew.\% Ag)},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={200,400,600,800,1000,1200},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false, clip=false,
+]
+
+% Linker liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1040) (20,1000) (30,960)
+    (40,920) (50,875) (60,825) (71.9,779)
+};
+
+% Rechter liquidus
+\addplot[thick, smooth] coordinates {
+    (71.9,779) (80,835) (90,890) (100,962)
+};
+
+% Alpha-solvus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (2,1060) (4,1010) (6,930)
+    (7.5,850) (8.0,779)
+};
+\addplot[thick, smooth] coordinates {
+    (0,300) (1,450) (3,600) (6,730) (8.0,779)
+};
+
+% Beta-solvus
+\addplot[thick, smooth] coordinates {
+    (100,300) (99,450) (97,600) (94,720) (91.2,779)
+};
+\addplot[thick, smooth] coordinates {
+    (100,962) (99,930) (96,870) (93,810) (91.2,779)
+};
+
+% Eutectische horizontale
+\addplot[thick] coordinates {(8.0,779) (91.2,779)};
+
+% Fase-velden
+\node at (axis cs:63,1030) {\large Liquid};
+\node at (axis cs:28,865) {$\alpha + L$};
+\node at (axis cs:89,835) {$\beta + L$};
+\node at (axis cs:50,480) {$\alpha + \beta$};
+\node at (axis cs:3,825) {$\alpha$};
+\node at (axis cs:98,775) {$\beta$};
+
+% Karakteristieke punten
+\node[below right] at (axis cs:8,779) {$8.0$};
+\node[below] at (axis cs:71.9,779) {$71.9$};
+\node[below left] at (axis cs:91.2,779) {$91.2$};
+\node[above] at (axis cs:40,779) {$779^\circ$C};
+
+% Cu en Ag labels
+\node[below] at (axis cs:0,165) {(Cu)};
+\node[below] at (axis cs:100,165) {(Ag)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+
+\begin{solution}
+
+Met de hefboomregel kunnen we bepalen welk percentage van de legering uit de $\alpha$-fase bestaat. We trekken hiervoor een verticale lijn op de gegeven procentuele samenstelling.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=13cm, height=9cm,
+    xmin=0, xmax=100, ymin=200, ymax=1200,
+    xlabel={Samenstelling (gew.\% Ag)},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={200,400,600,800,1000,1200},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false,
+    clip=false,
+]
+
+% Linker liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1040) (20,1000) (30,960)
+    (40,920) (50,875) (60,825) (71.9,779)
+};
+
+% Rechter liquidus
+\addplot[thick, smooth] coordinates {
+    (71.9,779) (80,835) (90,890) (100,962)
+};
+
+% Alpha-solvus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (2,1060) (4,1010) (6,930)
+    (7.5,850) (8.0,779)
+};
+\addplot[thick, smooth] coordinates {
+    (0,300) (1,450) (3,600) (6,730) (8.0,779)
+};
+
+% Beta-solvus
+\addplot[thick, smooth] coordinates {
+    (100,300) (99,450) (97,600) (94,720) (91.2,779)
+};
+\addplot[thick, smooth] coordinates {
+    (100,962) (99,930) (96,870) (93,810) (91.2,779)
+};
+
+% Eutectische horizontale
+\addplot[thick] coordinates {(8.0,779) (91.2,779)};
+
+% C0 lijnen
+\addplot[drawcolour, thin, no marks]
+    coordinates {(0,850) (100,850)};
+\addplot[drawcolour, thin, no marks]
+    coordinates {(40,200) (40,1200)};
+
+% Fasevelden
+\node at (axis cs:63,1030) {\large Liquid};
+\node at (axis cs:15,950) {$\alpha + L$};
+\node at (axis cs:89,835) {$\beta + L$};
+\node at (axis cs:50,480) {$\alpha + \beta$};
+\node at (axis cs:3,825) {$\alpha$};
+\node at (axis cs:98,775) {$\beta$};
+
+% Punten
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,920)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,850)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,779)};
+
+\node[above left, drawcolour] at (axis cs:40,920) {A};
+\node[above right, drawcolour] at (axis cs:40,850) {P};
+\node[below left, drawcolour] at (axis cs:40,779) {B};
+
+% Cu en Ag labels
+\node[below] at (axis cs:0,165) {(Cu)};
+\node[below] at (axis cs:100,165) {(Ag)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+Tot en met punt A is de stof volledig vloeibaar en vanaf punt B is de stof volledig vast. We kunnen dus een L-lijn tekenen om te laten zien dat de stof $100\%$ vloeibaar is. Op punt B wordt al de overgebleven Liquid omgezet naar de vaste $\alpha + \beta$ fase.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=13cm, height=9cm,
+    xmin=0, xmax=100, ymin=200, ymax=1200,
+    xlabel={Samenstelling (gew.\% Ag)},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={200,400,600,800,1000,1200},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false,
+    clip=false,
+]
+
+% Linker liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1040) (20,1000) (30,960)
+    (40,920) (50,875) (60,825) (71.9,779)
+};
+
+% Rechter liquidus
+\addplot[thick, smooth] coordinates {
+    (71.9,779) (80,835) (90,890) (100,962)
+};
+
+% Alpha-solvus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (2,1060) (4,1010) (6,930)
+    (7.5,850) (8.0,779)
+};
+\addplot[thick, smooth] coordinates {
+    (0,300) (1,450) (3,600) (6,730) (8.0,779)
+};
+
+% Beta-solvus
+\addplot[thick, smooth] coordinates {
+    (100,300) (99,450) (97,600) (94,720) (91.2,779)
+};
+\addplot[thick, smooth] coordinates {
+    (100,962) (99,930) (96,870) (93,810) (91.2,779)
+};
+
+% Eutectische horizontale
+\addplot[thick] coordinates {(8.0,779) (91.2,779)};
+
+% C0 lijn
+\addplot[drawcolour, thin, no marks]
+    coordinates {(40,200) (40,1200)};
+
+% Fasevelden
+\node at (axis cs:63,1030) {\large Liquid};
+\node at (axis cs:15,950) {$\alpha + L$};
+\node at (axis cs:89,835) {$\beta + L$};
+\node at (axis cs:50,480) {$\alpha + \beta$};
+\node at (axis cs:3,825) {$\alpha$};
+\node at (axis cs:98,775) {$\beta$};
+
+% Punten
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,920)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,779)};
+
+\node[above left, drawcolour] at (axis cs:40,920) {A};
+\node[below left, drawcolour] at (axis cs:40,779) {B};
+
+% L en alpha lijnen
+\addplot[Liquiduscolour, ultra thick, no marks]
+    coordinates {(40,920) (6,920)};
+\node[Liquiduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:20,920) {L};
+
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+    coordinates {(7,920)};
+
+
+% Cu en Ag labels
+\node[below] at (axis cs:0,165) {(Cu)};
+\node[below] at (axis cs:100,165) {(Ag)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+
+
+
+
+
+Op het gevraagde punt is de stof deels vast en deels vloeibaar. We tekenen daarom een \textcolor{Liquiduscolour}{\textbf{L}}-lijn en een \textcolor{Soliduscolour}{\textbf{$\alpha$}}-lijn. Let op: een veelgemaakte fout is het omwisselen van deze twee lijnen.
+
+\bigskip
+
+
+
+
+
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=13cm, height=9cm,
+    xmin=0, xmax=100, ymin=200, ymax=1200,
+    xlabel={Samenstelling (gew.\% Ag)},
+    ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,60,80,100},
+    ytick={200,400,600,800,1000,1200},
+    axis lines=box,
+    tick style={black},
+    enlargelimits=false,
+    clip=false,
+]
+
+% Linker liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1040) (20,1000) (30,960)
+    (40,920) (50,875) (60,825) (71.9,779)
+};
+
+% Rechter liquidus
+\addplot[thick, smooth] coordinates {
+    (71.9,779) (80,835) (90,890) (100,962)
+};
+
+% Alpha-solvus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (2,1060) (4,1010) (6,930)
+    (7.5,850) (8.0,779)
+};
+\addplot[thick, smooth] coordinates {
+    (0,300) (1,450) (3,600) (6,730) (8.0,779)
+};
+
+% Beta-solvus
+\addplot[thick, smooth] coordinates {
+    (100,300) (99,450) (97,600) (94,720) (91.2,779)
+};
+\addplot[thick, smooth] coordinates {
+    (100,962) (99,930) (96,870) (93,810) (91.2,779)
+};
+
+% Eutectische horizontale
+\addplot[thick] coordinates {(8.0,779) (91.2,779)};
+
+% C0 lijnen
+\addplot[drawcolour, thin, no marks]
+    coordinates {(0,850) (100,850)};
+\addplot[drawcolour, thin, no marks]
+    coordinates {(40,200) (40,1200)};
+
+% CL lijn
+\addplot[Soliduscolour, thin, no marks]
+    coordinates {(55,200) (55,1200)};
+
+% Calpha lijn
+\addplot[Liquiduscolour, thin, no marks]
+    coordinates {(7.5,200) (7.5,1200)};
+
+% L en alpha lijnen
+\addplot[Soliduscolour, ultra thick, no marks]
+    coordinates {(40,850) (55,850)};
+\addplot[Liquiduscolour, ultra thick, no marks]
+    coordinates {(7.5,850) (40,850)};
+
+% Totale lijn
+\addplot[drawcolour, ultra thick, no marks]
+    coordinates {(7.5,300) (55,300)};
+
+% Fasevelden
+\node at (axis cs:63,1030) {\large Liquid};
+\node at (axis cs:15,950) {$\alpha + L$};
+\node at (axis cs:89,835) {$\beta + L$};
+\node at (axis cs:50,480) {$\alpha + \beta$};
+\node at (axis cs:3,825) {$\alpha$};
+\node at (axis cs:98,775) {$\beta$};
+
+% Samenstellingslabels
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:7.5,200) {7.5};
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:7.5,165) {$C_{\alpha}$};
+
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:40,200) {40};
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:40,165) {$C_0$};
+
+\node[Soliduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:55,200) {55};
+\node[Soliduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:55,165) {$C_L$};
+
+% Fase-labels
+\node[Soliduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:47.5,850) {$\alpha$};
+\node[Liquiduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:23.75,850) {L};
+
+\node[drawcolour,font=\bfseries\Large,yshift=-12pt]
+    at (axis cs:31.25,300) {tot};
+
+% Punten
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(40,850)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+    coordinates {(55,850)};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+    coordinates {(7.5,850)};
+
+\node[below] at (axis cs:0,165) {(Cu)};
+\node[below] at (axis cs:100,165) {(Ag)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+We definiëren hier de volgende punten op de horizontale as:
+
+\begin{itemize}
+    \item $C_0 = 40$ = oorspronkelijke samenstelling ($40$ gew.\% Ag)
+    \item $C_L = 55$ = samenstelling van de vaste fase
+    \item $C_{\alpha} = 7{,}5$ = samenstelling van de vloeibare fase
+\end{itemize}
+
+Met deze punten kunnen we de volgende afstanden definiëren op het diagram:
+
+\begin{itemize}
+    \item $\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}} = 55 - 7{,}5$ = totale hoeveelheid stof
+    \item $\textcolor{Soliduscolour}{\boldsymbol{\alpha}} = 55 - 40$ = hoeveelheid vaste fase
+    \item $\textcolor{Liquiduscolour}{\mathbf{\text{\textbf{L}}}} = 40 - 7{,}5$ = hoeveelheid vloeibare fase
+\end{itemize}
+
+Nu zoeken we het percentage vaste $\alpha$-fase. Hiervoor gebruiken we de lengte van het vaste gedeelte ($\textcolor{Soliduscolour}{\boldsymbol{\alpha}}$) ten opzichte van de totale lengte ($\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}}$).
+
+\[
+\text{hoeveelheid vaste fase}
+=
+\frac{\textcolor{Soliduscolour}{\boldsymbol{\alpha}}}
+{\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}}}
+=
+\frac{C_L-C_0}{C_L-C_{\alpha}}
+=
+\frac{55-40}{55-7{,}5}
+=
+\frac{15}{47{,}5}
+=
+0{,}316
+\]
+
+Deze legering bevat bij $850^\circ$C dus ongeveer $32\%$ vaste $\alpha$-fase en $68\%$ vloeibare fase.
+
+\end{solution}
+
+\end{exercise}
+
+
+
+
 \begin{exercise}
 
 Gegeven is het fasediagram van Hg en Ag. Een legering van $65\%$ kwik en $35\%$ zilver wordt afgekoeld. Bij welke temperatuur bevat deze legering het meeste $\beta$ fase, bij $200^\circ$C, of bij kamertemperatuur?
@@ -909,77 +1331,6 @@ coordinates {(65,200)};
 \end{exercise}
 
 
-
-
-
-
-
-\begin{center}
-\begin{tikzpicture}
-\begin{axis}[
-    width=13cm, height=9cm,
-    xmin=0, xmax=100, ymin=200, ymax=1200,
-    xlabel={Samenstelling (gew.\% Ag)},
-    ylabel={Temperatuur ($^\circ$C)},
-    xtick={0,20,40,60,80,100},
-    ytick={200,400,600,800,1000,1200},
-    axis lines=box,
-    tick style={black},
-    enlargelimits=false,
-]
-
-% Linker liquidus
-\addplot[thick, smooth] coordinates {
-    (0,1085) (10,1040) (20,1000) (30,960)
-    (40,920) (50,875) (60,825) (71.9,779)
-};
-
-% Rechter liquidus
-\addplot[thick, smooth] coordinates {
-    (71.9,779) (80,835) (90,890) (100,962)
-};
-
-% Alpha-solvus
-\addplot[thick, smooth] coordinates {
-    (0,1085) (2,1060) (4,1010) (6,930)
-    (7.5,850) (8.0,779)
-};
-\addplot[thick, smooth] coordinates {
-    (0,300) (1,450) (3,600) (6,730) (8.0,779)
-};
-
-% Beta-solvus
-\addplot[thick, smooth] coordinates {
-    (100,300) (99,450) (97,600) (94,720) (91.2,779)
-};
-\addplot[thick, smooth] coordinates {
-    (100,962) (99,930) (96,870) (93,810) (91.2,779)
-};
-
-% Eutectische horizontale
-\addplot[thick] coordinates {(8.0,779) (91.2,779)};
-
-% Fase-velden
-\node at (axis cs:63,1030) {\large Liquid};
-\node at (axis cs:28,865) {$\alpha + L$};
-\node at (axis cs:89,835) {$\beta + L$};
-\node at (axis cs:50,480) {$\alpha + \beta$};
-\node at (axis cs:3,825) {$\alpha$};
-\node at (axis cs:98,775) {$\beta$};
-
-% Karakteristieke punten
-\node[below right] at (axis cs:8,779) {$8.0$};
-\node[below] at (axis cs:71.9,779) {$71.9$};
-\node[below left] at (axis cs:91.2,779) {$91.2$};
-\node[above] at (axis cs:40,779) {$779^\circ$C};
-
-% Cu en Ag labels
-\node[below] at (axis cs:0,200) {(Cu)};
-\node[below] at (axis cs:100,200) {(Ag)};
-
-\end{axis}
-\end{tikzpicture}
-\end{center}
 
 
 \begin{exercise}
