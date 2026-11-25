@@ -16,6 +16,315 @@
 
 
 
+\begin{exercise}
+
+Hoeveel procent Liquidus bevat een legering van Ni en Cu met $70\%$ massa Ni bij $1380$°C? Maak een schatting aan de hand van het gegeven fasediagram van Ni en Cu.
+
+
+\bigskip
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=11cm, xmin=0, xmax=100, ymin=1000, ymax=1600,
+    xlabel={Samenstelling (gew.\% Ni)}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={1000,1100,1200,1300,1400,1500,1600},
+    axis lines=box, tick style={black,thick},
+    major tick length=4pt, enlargelimits=false, clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1150) (20,1210) (40,1310)
+    (60,1380) (80,1435) (100,1455)
+};
+
+% Solidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (20,1160) (40,1240)
+    (60,1320) (80,1400) (100,1455)
+};
+
+% Region labels
+\node at (axis cs:35,1460) {\Large Liquid};
+\node at (axis cs:35,1255) {\Large $\alpha + L$};
+\node at (axis cs:50,1160) {\Large $\alpha$};
+
+% Curve labels
+\node[fill=white,inner sep=1pt] at (axis cs:38,1325) {Liquidus lijn};
+\node[fill=white,inner sep=1pt] at (axis cs:57,1275) {Solidus lijn};
+
+% Melting point annotations
+\node[anchor=north west] at (axis cs:-13,1085) {1085$^\circ$C};
+\node[anchor=south east] at (axis cs:113,1455) {1455$^\circ$C};
+
+% Cu and Ni labels
+\node[below] at (axis cs:0,980) {(Cu)};
+\node[below] at (axis cs:100,980) {(Ni)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+\begin{solution}
+
+Met de hefboomregel kunnen we bepalen welk percentage van de legering vloeibaar is. We trekken hiervoor een verticale lijn op de gegeven procentuele samenstelling.
+
+Het mengsel van Cu en Ni koelt af vanuit de Liquidus fase naar de solidus fase ($\alpha$ fase).
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=11cm, xmin=0, xmax=100, ymin=1000, ymax=1600,
+    xlabel={Samenstelling (gew.\% Ni)}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={1000,1100,1200,1300,1400,1500,1600},
+    axis lines=box, tick style={black,thick},
+    major tick length=4pt, enlargelimits=false, clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1150) (20,1210) (40,1310)
+    (60,1380) (80,1435) (100,1455)
+};
+
+% Solidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (20,1160) (40,1240)
+    (60,1320) (80,1400) (100,1455)
+};
+
+% C0 lines
+\addplot[drawcolour, thin, no marks]
+    coordinates {(0,1380) (100,1380)};
+\addplot[drawcolour, thin, no marks]
+    coordinates {(70,1000) (70,1600)};
+
+% Region labels
+\node at (axis cs:35,1460) {\Large Liquid};
+\node at (axis cs:35,1255) {\Large $\alpha + L$};
+\node at (axis cs:50,1160) {\Large $\alpha$};
+
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:70,1000) {70};
+% Points
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1410)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1380)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1360)};
+
+\node[above left, drawcolour] at (axis cs:70,1410) {A};
+\node[above right, drawcolour] at (axis cs:70,1380) {P};
+\node[below left, drawcolour] at (axis cs:70,1360) {B};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+
+Tot en met punt A is de stof volledig vloeibaar en vanaf punt B is de stof volledig vast. We kunnnen dus een L en $\alpha$ lijn tekenen om te laten zien dat de stof $100\%$ vloeibaar of vast is.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=11cm, xmin=0, xmax=100, ymin=1000, ymax=1600,
+    xlabel={Samenstelling (gew.\% Ni)}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,60,80,100},
+    ytick={1000,1100,1200,1300,1400,1500,1600},
+    axis lines=box, tick style={black,thick},
+    major tick length=4pt, enlargelimits=false, clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1150) (20,1210) (40,1310)
+    (60,1380) (80,1435) (100,1455)
+};
+
+% Solidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (20,1160) (40,1240)
+    (60,1320) (80,1400) (100,1455)
+};
+
+% C0 lines
+\addplot[drawcolour, thin, no marks]
+    coordinates {(70,1000) (70,1600)};
+
+% Region labels
+\node at (axis cs:35,1460) {\Large Liquid};
+\node at (axis cs:35,1255) {\Large $\alpha + L$};
+\node at (axis cs:50,1160) {\Large $\alpha$};
+
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:70,1000) {70};
+% Points
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1410)};
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1360)};
+
+\node[above left, drawcolour] at (axis cs:70,1410) {A};
+\node[below right, drawcolour] at (axis cs:70,1360) {B};
+
+% L and alpha lines
+\addplot[Liquiduscolour, ultra thick, no marks]
+    coordinates {(70,1410) (83,1410)};
+\addplot[Soliduscolour, ultra thick, no marks]
+    coordinates {(54,1360) (70,1360)};
+\node[Liquiduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:72.5,1410) {L};
+\node[Soliduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:65,1360) {$\alpha$};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+    coordinates {(83,1410)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+    coordinates {(54,1360)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+
+Op het gevraagde punt is de stof deels vast en deels vloeibaar. We tekenen daarom een \textcolor{Liquiduscolour}{\textbf{L}} lijn en een \textcolor{Soliduscolour}{\textbf{$\alpha$}} lijn. Let op: een veel gemaakte fout is het omwisselen van deze twee lijnen.
+
+
+\bigskip
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=11cm, xmin=0, xmax=100, ymin=1000, ymax=1600,
+    xlabel={ (gew.\% Ni) \quad}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,20,40,80,100},
+    ytick={1000,1100,1200,1300,1400,1500,1600},
+    axis lines=box, tick style={black,thick},
+    major tick length=4pt, enlargelimits=false, clip=false,
+]
+
+% Liquidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (10,1150) (20,1210) (40,1310)
+    (60,1380) (80,1435) (100,1455)
+};
+
+% Solidus
+\addplot[thick, smooth] coordinates {
+    (0,1085) (20,1160) (40,1240)
+    (60,1320) (80,1400) (100,1455)
+};
+
+% C0 lines
+\addplot[drawcolour, thin, no marks]
+    coordinates {(0,1380) (100,1380)};
+\addplot[drawcolour, thin, no marks]
+    coordinates {(70,1000) (70,1600)};
+
+% CL line
+\addplot[Soliduscolour, thin, no marks]
+    coordinates {(60,1000) (60,1600)};
+
+% Calpha line
+\addplot[Liquiduscolour, thin, no marks]
+    coordinates {(75,1000) (75,1600)};
+
+% L and alpha lines
+\addplot[Liquiduscolour, ultra thick, no marks]
+    coordinates {(70,1380) (75,1380)};
+\addplot[Soliduscolour, ultra thick, no marks]
+    coordinates {(60,1380) (70,1380)};
+
+% Total line
+\addplot[drawcolour, ultra thick, no marks]
+    coordinates {(60,1115) (75,1115)};
+
+% Region labels
+\node at (axis cs:35,1460) {\Large Liquid};
+\node at (axis cs:35,1255) {\Large $\alpha + L$};
+\node at (axis cs:50,1160) {\Large $\alpha$};
+
+% Composition labels
+\node[Soliduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:60,1000) {60};
+\node[Soliduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:60,970) {$C_L$};
+
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:70,1000) {70};
+\node[drawcolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:70,970) {$C_0$};
+
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:75,1000) {75};
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt]
+    at (axis cs:75,970) {$C_{\alpha}$};
+
+% Phase labels
+\node[Liquiduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:72.5,1380) {L};
+\node[Soliduscolour,font=\bfseries\Large,yshift=10pt]
+    at (axis cs:65,1380) {$\alpha$};
+
+\node[drawcolour,font=\bfseries\Large,yshift=-12pt]
+    at (axis cs:67.5,1115) {tot};
+
+% Points
+\addplot[only marks, mark=*, drawcolour, mark size=2pt]
+    coordinates {(70,1380)};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt]
+    coordinates {(75,1380)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt]
+    coordinates {(60,1380)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\bigskip
+
+We definiëren hier de volgende punten op de horizontale as:
+
+\begin{itemize}
+    \item $C_0 = 70$ = oorspronkelijke samenstelling ($70$ gew.\% Ni)
+    \item $C_L = 60$ = samenstelling van de vloeibare fase
+    \item $C_{\alpha} = 75$ = samenstelling van de vaste fase
+\end{itemize}
+
+Met deze punten kunnen we de volgende afstanden definiëren op het diagram:
+
+\begin{itemize}
+    \item $\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}} = 75 - 60$ = totale hoeveelheid stof
+    \item $\textcolor{Liquiduscolour}{\mathbf{\text{\textbf{L}}}} = 75 - 70$ = hoeveelheid vloeibare fase
+    \item $\textcolor{Soliduscolour}{\boldsymbol{\alpha}} = 70 - 60$ = hoeveelheid vaste fase
+\end{itemize}
+
+Nu zoeken we het percentage vloeibare fase. Hiervoor gebruiken we de lengte van het vloeibare gedeelte ($\textcolor{Liquiduscolour}{\mathbf{\text{\textbf{L}}}}$) ten opzichte van de totale lengte ($\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}}$).
+
+\[
+\text{hoeveelheid vloeibare fase}
+=
+\frac{\textcolor{Liquiduscolour}{\mathbf{\text{\textbf{L}}}}}
+{\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}}}
+=
+\frac{C_{\alpha}-C_0}{C_{\alpha}-C_L}
+=
+\frac{75-70}{75-60}
+=
+\frac{5}{15}
+=
+0{,}333
+\]
+
+Deze legering bevat bij $1380$°C dus ongeveer $33\%$ vloeibare fase (Liquidus) en $66\%$ vaste $\alpha$-fase.
+
+\end{solution}
+
+\end{exercise}
+
 
 
 \begin{exercise}
@@ -23,6 +332,7 @@
 Een mengeling met $20\%$ massa Si en $80\%$ massa Ge wordt afgekoeld van $1500$°C. Tot hoeveel graden moet er gekoeld worden zodat ongeveer $66\%$ van de vloeistof gestold is? Maak een schatting aan de hand van het gegeven fasediagra van Si en Ge. Teken de microstructuur van deze samenstelling.
 
 \bigskip
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=12cm, height=8cm, xmin=0, xmax=100, ymin=900, ymax=1500,
@@ -54,13 +364,13 @@ Een mengeling met $20\%$ massa Si en $80\%$ massa Ge wordt afgekoeld van $1500$�
 
 \end{axis}
 \end{tikzpicture}
-
+\end{center}
 \bigskip
 
 
 \begin{solution} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
     width=12cm, height=8cm, xmin=0, xmax=100, ymin=900, ymax=1500,
@@ -126,12 +436,9 @@ Een mengeling met $20\%$ massa Si en $80\%$ massa Ge wordt afgekoeld van $1500$�
 
 \end{axis}
 \end{tikzpicture}
-
+\end{center}
 
 \bigskip
-
-
-
 
 
 Met de hefboomregel kunnen we bepalen welk percentage van de legering gestold is. We trekken hiervoor een verticale lijn op de gegeven procentuele samenstelling.
