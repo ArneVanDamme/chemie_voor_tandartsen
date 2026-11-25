@@ -4,6 +4,10 @@
 
 \begin{document}
 
+\definecolor{drawcolour}{RGB}{0,0,255}
+\definecolor{Liquiduscolour}{RGB}{0,160,0}
+\definecolor{Soliduscolour}{RGB}{255,0,0}
+
 \begin{center}
     {\Large\textbf{Fasediagrammen \& Hefboomregel}}
 \end{center}
@@ -16,209 +20,143 @@ Een mengeling met $20\%$ massa Si en $80\%$ massa Ge wordt afgekoeld van $1500$�
 
 \bigskip
 \begin{tikzpicture}
-    \begin{axis}[
-        width=12cm,
-        height=8cm,
-        xmin=0, xmax=100,
-        ymin=900, ymax=1500,
-        xlabel={Samenstelling (gew.\% Si)},
-        ylabel={Temperatuur ($^\circ$C)},
-        xtick={0,10,20,30,40,50,60,70,80,90,100},
-        ytick={900,1000,1100,1200,1300,1400,1500},
-        minor tick num=1,
-        tick style={black, thick},
-        axis line style={black, thick},
-        enlargelimits=false,
-    ]
+\begin{axis}[
+    width=12cm, height=8cm, xmin=0, xmax=100, ymin=900, ymax=1500,
+    xlabel={Samenstelling (gew.\% Si)}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,10,20,30,40,50,60,70,80,90,100},
+    ytick={900,1000,1100,1200,1300,1400,1500},
+    minor tick num=1, tick style={black,thick}, axis line style={black,thick},
+    enlargelimits=false, clip=false,
+]
 
-    % Liquidus
-    \addplot[
-        thick,
-        black,
-        mark=square*,
-        mark size=1.8pt
-    ] coordinates {
-        (0,945)
-        (10,1150)
-        (20,1205)
-        (30,1260)
-        (40,1300)
-        (50,1330)
-        (60,1370)
-        (70,1390)
-        (80,1400)
-        (90,1410)
-        (100,1415)
-    };
+% Liquidus
+\addplot[smooth, thick, black] coordinates {
+    (0,945) (10,1150) (20,1212) (30,1260) (40,1300) (50,1330)
+    (60,1370) (70,1390) (80,1400) (90,1410) (100,1415)
+};
 
-    % Solidus
-    \addplot[
-        thick,
-        black,
-        mark=*,
-        mark size=1.4pt
-    ] coordinates {
-        (0,945)
-        (10,1000)
-        (20,1060)
-        (30,1120)
-        (40,1180)
-        (50,1235)
-        (60,1285)
-        (70,1335)
-        (80,1370)
-        (90,1400)
-        (100,1415)
-    };
+% Solidus
+\addplot[smooth, thick, black] coordinates {
+    (0,945) (10,1000) (20,1060) (30,1120) (40,1180) (50,1235)
+    (60,1285) (70,1335) (80,1370) (90,1400) (100,1415)
+};
 
-    % Phase labels
-    \node at (axis cs:28,1390) {\bfseries Liquid};
-    \node at (axis cs:40,1240) {\Large $+$};
-    \node at (axis cs:28,1185) {\bfseries Liquid};
-    \node at (axis cs:47,1275) {\Large $\alpha$};
-    \node at (axis cs:58,1080) {\Large $\alpha$};
+% Phase labels
+\node at (axis cs:28,1390) {\bfseries Liquid};
+\node at (axis cs:40,1240) {\Large $+$};
+\node at (axis cs:28,1185) {\bfseries Liquid};
+\node at (axis cs:47,1275) {\Large $\alpha$};
+\node at (axis cs:58,1080) {\Large $\alpha$};
 
-    \end{axis}
+\end{axis}
 \end{tikzpicture}
+
+\bigskip
 
 
 \begin{solution} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{tikzpicture}
-    \begin{axis}[
-        width=12cm,
-        height=8cm,
-        xmin=0, xmax=100,
-        ymin=900, ymax=1500,
-        xlabel={Samenstelling (gew.\% Si)},
-        ylabel={Temperatuur ($^\circ$C)},
-        xtick={0,10,20,30,40,50,60,70,80,90,100},
-        ytick={900,1000,1100,1200,1300,1400,1500},
-        minor tick num=1,
-        tick style={black, thick},
-        axis line style={black, thick},
-        enlargelimits=false,
-        clip=false,
-    ]
+\begin{axis}[
+    width=12cm, height=8cm, xmin=0, xmax=100, ymin=900, ymax=1500,
+    xlabel={Samenstelling (gew.\% Si)}, ylabel={Temperatuur ($^\circ$C)},
+    xtick={0,10,20,30,40,50,60,70,80,90,100},
+    ytick={900,1000,1100,1200,1300,1400,1500},
+    minor tick num=1, tick style={black,thick}, axis line style={black,thick},
+    enlargelimits=false, clip=false,
+]
 
-    % Liquidus
-    \addplot[
-        thick,
-        black,
-        mark=square*,
-        mark size=1.8pt
-    ] coordinates {
-        (0,945)
-        (10,1150)
-        (20,1205)
-        (30,1260)
-        (40,1300)
-        (50,1330)
-        (60,1370)
-        (70,1390)
-        (80,1400)
-        (90,1410)
-        (100,1415)
-    };
+% Liquidus
+\addplot[smooth, thick, black] coordinates {
+    (0,945) (10,1150) (20,1212) (30,1260) (40,1300) (50,1330)
+    (60,1370) (70,1390) (80,1400) (90,1410) (100,1415)
+};
 
-    % Solidus
-    \addplot[
-        thick,
-        black,
-        mark=*,
-        mark size=1.4pt
-    ] coordinates {
-        (0,945)
-        (10,1000)
-        (20,1060)
-        (30,1120)
-        (40,1180)
-        (50,1235)
-        (60,1285)
-        (70,1335)
-        (80,1370)
-        (90,1400)
-        (100,1415)
-    };
+% Solidus
+\addplot[smooth, thick, black] coordinates {
+    (0,945) (10,1000) (20,1060) (30,1120) (40,1180) (50,1235)
+    (60,1285) (70,1335) (80,1370) (90,1400) (100,1415)
+};
 
-    % Horizontal blue line at T = 1100
-    \addplot[
-        blue,
-        thick,
-        no marks
-    ] coordinates {
-        (0,1100)
-        (100,1100)
-    };
+% C0 lines
+\addplot[drawcolour, thin, no marks] coordinates {(0,1100) (100,1100)};
+\addplot[drawcolour, thin, no marks] coordinates {(20,900) (20,1500)};
 
-    % Vertical blue line at Si = 20
-    \addplot[
-        blue,
-        thick,
-        no marks
-    ] coordinates {
-        (20,900)
-        (20,1500)
-    };
+% CL line
+\addplot[Soliduscolour, thin, no marks] coordinates {(8,900) (8,1500)};
 
-        % Vertical red lines at Si = 8 and Si = 26
-    \addplot[
-        red,
-        thick,
-        no marks
-    ] coordinates {
-        (8,900)
-        (8,1500)
-    };
+% Calpha line
+\addplot[Liquiduscolour, thin, no marks] coordinates {(26,900) (26,1500)};
 
-    \addplot[
-        red,
-        thick,
-        no marks
-    ] coordinates {
-        (26,900)
-        (26,1500)
-    };
+% L line
+\addplot[Soliduscolour, ultra thick, no marks] coordinates {(8,1350) (20,1350)};
 
-    % Phase labels
-    \node at (axis cs:28,1390) {\bfseries Liquid};
-    \node at (axis cs:40,1240) {\Large $+$};
-    \node at (axis cs:28,1185) {\bfseries Liquid};
-    \node at (axis cs:47,1275) {\Large $\alpha$};
-    \node at (axis cs:58,1080) {\Large $\alpha$};
+% alpha line
+\addplot[Liquiduscolour, ultra thick, no marks] coordinates {(20,1350) (26,1350)};
 
-    % Red labels below the x-axis
-    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:8,900) {8};
-    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:8,860) {$C_L$};
-    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:26,900) {26};
-    \node[red, font=\bfseries, yshift=-8pt] at (axis cs:26,860) {$C_{\alpha}$};
-    \node[blue, font=\bfseries, yshift=-8pt] at (axis cs:20,860) {$C_0$};
+% tot line
+\addplot[drawcolour, ultra thick, no marks] coordinates {(8,950) (26,950)};
 
-    \end{axis}
+% Phase labels
+\node at (axis cs:28,1390) {\bfseries Liquid};
+\node at (axis cs:40,1240) {\Large $+$};
+\node at (axis cs:28,1185) {\bfseries Liquid};
+\node at (axis cs:47,1275) {\Large $\alpha$};
+\node at (axis cs:58,1080) {\Large $\alpha$};
+
+% Composition labels
+\node[Soliduscolour,font=\bfseries,yshift=-8pt] at (axis cs:8,900) {8};
+\node[Soliduscolour,font=\bfseries,yshift=-8pt] at (axis cs:8,860) {$C_L$};
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt] at (axis cs:26,900) {26};
+\node[Liquiduscolour,font=\bfseries,yshift=-8pt] at (axis cs:26,860) {$C_{\alpha}$};
+\node[drawcolour,font=\bfseries,yshift=-8pt] at (axis cs:20,860) {$C_0$};
+
+\node[Soliduscolour,font=\bfseries\Large,yshift=-8pt] at (axis cs:14,1350) {$\alpha$};
+\node[Liquiduscolour,font=\bfseries\Large,yshift=-8pt] at (axis cs:23,1350) {L};
+\node[drawcolour,font=\bfseries\Large,yshift=-8pt] at (axis cs:17,950) {tot};
+
+\addplot[only marks, mark=*, drawcolour, mark size=2pt] coordinates {(20,1100)};
+\addplot[only marks, mark=*, Soliduscolour, mark size=2pt] coordinates {(8,1100)};
+\addplot[only marks, mark=*, Liquiduscolour, mark size=2pt] coordinates {(26,1100)};
+
+\end{axis}
 \end{tikzpicture}
+
 
 \bigskip
 
+
+
+
+
 Met de hefboomregel kunnen we bepalen welk percentage van de legering gestold is. We trekken hiervoor een verticale lijn op de gegeven procentuele samenstelling.
 
-Nu zoeken we de temperatuur waarvoor $66\%$ van de vloeistof gestold is. We trekken een horizontale lijn op de plaats waar $66\%$ van de lijn aan de linkerkant ligt (van $C_L$ tot $C_0$). Dit is onze hoeveelheid $\alpha$-fase, dus vaste fase.
-
-\[
-\text{hoeveelheid } \alpha\text{-fase} = \frac{C_L-20}{C_L-C_{\alpha}}=0{,}66
-\]
-
-We definiëren hier de volgende punten op de horizontale as:
+We definiëren hier de volgende punten op de horizontale as (de naamgeving van deze punten is lichtjes verwarrend, dus gebruik gerust je eigen naamgeving):
 
 \begin{itemize}
-    \item $C_0$ = oorspronkelijke samenstelling ($20$ gew.$\%$ Si);
-    \item $C_L$ = samenstelling van de vloeibare fase;
-    \item $C_{\alpha}$ = samenstelling van de vaste fase.
+    \item $C_0 = 20$ = oorspronkelijke samenstelling ($20$ gew.$\%$ Si)
+    \item $C_L = 8$ = samenstelling van de vloeibare fase
+    \item $C_{\alpha} = 26$ = samenstelling van de vaste fase
 \end{itemize}
+
+Met deze punten kunnen we de volgende afstanden deffiniëren op het diagram:
+
+\begin{itemize}
+    \item $\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}} = 26 - 8$ = totale hoeveelheid stof
+    \item $\textcolor{Liquiduscolour}{\mathbf{\text{\textbf{L}}}} = 20 - 8$ = hoeveelheid liquidus fase
+    \item $\textcolor{Soliduscolour}{\boldsymbol{\alpha}} = 26 - 20$ = hoeveelheid vaste fase
+\end{itemize}
+
+Nu zoeken we de temperatuur waarvoor $66\%$ van de vloeistof gestold is. We trekken een horizontale lijn op de plaats waar $66\%$ van de lijn aan de linkerkant ligt ($\textcolor{Soliduscolour}{\boldsymbol{\alpha}}$). Dit is onze hoeveelheid $\alpha$-fase, dus vaste fase.
+
+\[
+\text{hoeveelheid } \alpha\text{-fase} = \frac{\textcolor{Soliduscolour}{\boldsymbol{\alpha}}}{\textcolor{drawcolour}{\mathbf{\text{\textbf{tot}}}}} = \frac{C_L-C_0}{C_L-C_{\alpha}}=0{,}66
+\]
 
 Deze samenstelling komt dus voor bij een temperatuur van ongeveer $1100$°C.
 
-De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur) en $33\%$ Liquidus-fase (wit op de figuur).
+De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (grijze korrels op de figuur) en $33\%$ Liquidus-fase (witte vloeistof op de figuur).
 
 \begin{center}
 \begin{tikzpicture}
@@ -259,6 +197,13 @@ De samenstelling bestaat dan uit $66\%$ $\alpha$-fase (in het grijs op de figuur
 \end{solution}
 
 \end{exercise}
+
+
+
+
+
+
+
 
 
 
